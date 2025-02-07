@@ -2,6 +2,10 @@
 
 A Flutter application for tracking mood and analyzing it using AI.
 
+## Figma Design
+
+- [Figma Design](https://www.figma.com/design/ouOKxazqnljO7leTqQN3Im/Mood-APP-Workshop?node-id=105-241&t=SvrZCPcmlFkTdbCX-1)
+
 ## Features
 
 - Track mood and analyze it using AI
@@ -38,10 +42,6 @@ A Flutter application for tracking mood and analyzing it using AI.
 ## Challenge Description 🏆
 
 Create a mood tracking dashboard that displays the user's current emotional state and provides personalized recommendations. The UI should be clean, modern and user-friendly.
-
-## Figma Design
-
-![Figma Design](https://www.figma.com/design/ouOKxazqnljO7leTqQN3Im/Mood-APP-Workshop?node-id=105-241&t=SvrZCPcmlFkTdbCX-1)
 
 ## Screenshots
 
