@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mood_ai/core/theme/app_theme.dart';
-import 'package:mood_ai/core/theme/theme_constants.dart';
+import 'package:mood_ai/src/screens/mood_tracker_screen_stateful.dart';
+import 'package:mood_ai/src/screens/mood_tracker_screnn_stateless.dart';
 
 void main() {
   runApp(const MyApp());
@@ -80,6 +81,28 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            FilledButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MoodTrackerScreenStateful(),
+                  ),
+                );
+              },
+              child: const Text('Mood Tracker Stateful'),
+            ),
+            FilledButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MoodTrackerScreenStateless(),
+                  ),
+                );
+              },
+              child: const Text('Mood Tracker Stateless'),
             ),
           ],
         ),
