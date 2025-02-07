@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mood_ai/core/theme/app_theme.dart';
 import 'package:mood_ai/core/theme/theme_constants.dart';
 
 void main() {
@@ -12,51 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Mood AI',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme(
-          primary: AppColors.primary_500,
-          primaryContainer: AppColors.primary_400,
-          secondary: AppColors.secondary_500,
-          secondaryContainer: AppColors.secondary_400,
-          surface: AppColors.surface,
-          error: AppColors.error,
-          onPrimary: AppColors.onPrimary,
-          onSecondary: AppColors.onSecondary,
-          onSurface: AppColors.onSurface,
-          onError: AppColors.onError,
-          brightness: Brightness.light,
-        ),
-        textTheme: TextTheme(
-          displayLarge: TextStyle(fontSize: AppTextStyles.displayLarge),
-          displayMedium: TextStyle(fontSize: AppTextStyles.displayMedium),
-          displaySmall: TextStyle(fontSize: AppTextStyles.displaySmall),
-          headlineLarge: TextStyle(fontSize: AppTextStyles.headlineLarge),
-          headlineMedium: TextStyle(fontSize: AppTextStyles.headlineMedium),
-          headlineSmall: TextStyle(fontSize: AppTextStyles.headlineSmall),
-          titleLarge: TextStyle(fontSize: AppTextStyles.titleLarge),
-          titleMedium: TextStyle(fontSize: AppTextStyles.titleMedium),
-          titleSmall: TextStyle(fontSize: AppTextStyles.titleSmall),
-          bodyLarge: TextStyle(fontSize: AppTextStyles.bodyLarge),
-          bodyMedium: TextStyle(fontSize: AppTextStyles.bodyMedium),
-          bodySmall: TextStyle(fontSize: AppTextStyles.bodySmall),
-        ),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.lightTheme,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
