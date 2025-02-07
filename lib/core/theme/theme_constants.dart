@@ -4,8 +4,8 @@ class AppColors {
   // Primary colors
   static const Color primary_500 = Color(0xFF7E93FF);
   static const Color primary_400 = Color(0xFF9EAFFF);
-  static const Color primary_300 = Color(0xFFBFCFFF);
-  static const Color primary_200 = Color(0xFFDDEAFF);
+  static const Color primary_300 = Color(0xFFD9DFFD);
+  static const Color primary_200 = Color(0xFFE4E8FD);
   static const Color primary_100 = Color(0xFFEFF5FF);
 
   // Secondary colors
@@ -30,26 +30,58 @@ class AppColors {
   static const Color dark_600 = Color(0xFF333333);
   static const Color dark_500 = Color(0xFF404040);
   static const Color dark_400 = Color(0xFF525252);
-  static const Color dark_300 = Color(0xFF737373);
+  static const Color dark_300 = Color(0xFFB8B8B8);
   static const Color dark_200 = Color(0xFFA3A3A3);
   static const Color dark_100 = Color(0xFFD4D4D4);
   static const Color dark_50 = Color(0xFFF5F5F5);
 }
 
 class AppTextStyles {
-  static const double displayLarge = 57.0;
-  static const double displayMedium = 45.0;
-  static const double displaySmall = 36.0;
+  // Headings
+  static const TextStyle h1 = TextStyle(
+    fontSize: 32.0,
+    fontWeight: FontWeight.w500,
+    height: 1.3,
+  );
 
-  static const double headlineLarge = 32.0;
-  static const double headlineMedium = 28.0;
-  static const double headlineSmall = 24.0;
+  static const TextStyle h2 = TextStyle(
+    fontSize: 24.0,
+    fontWeight: FontWeight.w500,
+    height: 1.3,
+  );
 
-  static const double titleLarge = 22.0;
-  static const double titleMedium = 16.0;
-  static const double titleSmall = 14.0;
+  static const TextStyle h3 = TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.w500,
+    height: 1.0,
+  );
 
-  static const double bodyLarge = 16.0;
-  static const double bodyMedium = 14.0;
-  static const double bodySmall = 12.0;
+  // Body text
+  static const TextStyle bodyLarge = TextStyle(
+    fontSize: 16.0,
+    height: 1.2,
+  );
+
+  static const TextStyle bodyMedium = TextStyle(
+    fontSize: 14.0,
+    height: 1.2,
+  );
+
+  static const TextStyle bodySmall = TextStyle(
+    fontSize: 12.0,
+    height: 1.2,
+  );
+
+  // Button/Label text
+  static const TextStyle button = TextStyle(
+    fontSize: 16.0,
+    fontWeight: FontWeight.w600,
+    height: 1.2,
+  );
+
+  static const TextStyle label = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w500,
+    height: 1.2,
+  );
 }
