@@ -1,0 +1,17 @@
+List<String> factors = [
+  'Family',
+  'Friends',
+  'Hobbies',
+  'Finances',
+  'Sleep',
+  'Drink',
+  'Food',
+  'Relationships',
+  'Education',
+  'Weather',
+  'Music',
+  'Travel',
+  'Health',
+  'Work',
+  'Other',
+];
