@@ -6,6 +6,11 @@ A Flutter application for tracking mood and analyzing it using AI.
 
 - [Figma Design](https://www.figma.com/design/ouOKxazqnljO7leTqQN3Im/Mood-APP-Workshop?node-id=105-241&t=SvrZCPcmlFkTdbCX-1)
 
+# Install Requirements
+
+- [Flutter install](https://docs.flutter.dev/get-started/install)
+- [IDX](https://idx.com/)
+
 ## Features
 
 - Track mood and analyze it using AI
