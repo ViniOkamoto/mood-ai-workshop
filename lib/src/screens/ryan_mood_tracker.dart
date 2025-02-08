@@ -190,41 +190,46 @@ class RyanMoodTracker extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: InkWell(
-                  onTap: () {},
                   borderRadius: BorderRadius.circular(16),
                   child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      children: [
-                        Text(
-                          '🧑‍⚕️',
-                          style: const TextStyle(fontSize: 24),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Find the right therapist for you',
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                'Click here and you will find some tips for you',
-                                style: TextStyle(
-                                  color: Colors.grey[400],
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
+                      padding: const EdgeInsets.all(16),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Color(0xFF51A1FF),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(
+                              '🧑‍⚕️',
+                              style: const TextStyle(fontSize: 24),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Find the right therapist for you',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  'Click here and you will find some tips for you',
+                                  style: TextStyle(
+                                    color: Colors.grey[400],
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )),
                 ),
               ),
               Card(
@@ -233,15 +238,21 @@ class RyanMoodTracker extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: InkWell(
-                  onTap: () {},
                   borderRadius: BorderRadius.circular(16),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Row(
                       children: [
-                        Text(
-                          '👟',
-                          style: const TextStyle(fontSize: 24),
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Color(0xFFD9DFFD),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            '👟',
+                            style: const TextStyle(fontSize: 24),
+                          ),
                         ),
                         const SizedBox(width: 12),
                         Expanded(
@@ -281,15 +292,21 @@ class RyanMoodTracker extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: InkWell(
-                  onTap: () {},
                   borderRadius: BorderRadius.circular(16),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Row(
                       children: [
-                        Text(
-                          '🧘‍♂️',
-                          style: const TextStyle(fontSize: 24),
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Color(0xFFD6FFCC),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            '🧘‍♂️',
+                            style: const TextStyle(fontSize: 24),
+                          ),
                         ),
                         const SizedBox(width: 12),
                         Expanded(
@@ -324,15 +341,21 @@ class RyanMoodTracker extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: InkWell(
-                  onTap: () {},
                   borderRadius: BorderRadius.circular(16),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Row(
                       children: [
-                        Text(
-                          '😴',
-                          style: const TextStyle(fontSize: 24),
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Color(0xFFCCE3FF),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            '😴',
+                            style: const TextStyle(fontSize: 24),
+                          ),
                         ),
                         const SizedBox(width: 12),
                         Expanded(
