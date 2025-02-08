@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mood_ai/core/theme/app_theme.dart';
 import 'package:mood_ai/src/screens/mood_tracker_screen_stateful.dart';
 import 'package:mood_ai/src/screens/mood_tracker_screnn_stateless.dart';
+import 'package:mood_ai/src/screens/ryan_mood_tracker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -103,6 +104,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: const Text('Mood Tracker Stateless'),
+            ),
+            FilledButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RyanMoodTracker(),
+                  ),
+                );
+              },
+              child: const Text("Ryan's Mood Tracker"),
             ),
           ],
         ),
