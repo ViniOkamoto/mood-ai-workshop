@@ -13,5 +13,6 @@ List<String> factors = [
   'Travel',
   'Health',
   'Work',
+  'School',
   'Other',
 ];
