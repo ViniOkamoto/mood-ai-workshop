@@ -1,48 +1,12 @@
-# mood_ai
+# Mood AI Workshop
 
-A Flutter application for tracking mood and analyzing it using AI.
+> **Challenge Status**: ✅ Completed (February 2024)
+>
+> This challenge has concluded, but feel free to explore the code and use it as a learning resource. The original challenge description is preserved below for reference.
 
-## Figma Design
+## Winner
 
-- [Figma Design](https://www.figma.com/design/ouOKxazqnljO7leTqQN3Im/Mood-APP-Workshop?node-id=105-241&t=SvrZCPcmlFkTdbCX-1)
-
-# Install Requirements
-
-- [Flutter install](https://docs.flutter.dev/get-started/install)
-- [IDX](https://idx.com/)
-
-## Features
-
-- Track mood and analyze it using AI
-
-## Technologies
-
-- Flutter
-- Google Generative AI
-- Google Fonts
-
-## Getting Started
-
-1. Clone the repository
-2. Run `flutter pub get`
-3. Run `flutter run`
-
-## API Key
-
-- Create a new API key in the Google Cloud Console
-- Add the API key to the `lib/src/services/gemini_service.dart` file
-
-## Resources
-
-- [Flutter Hunt - UI Examples](https://flutterhunt.com/)
-- [Flutter Material Widgets](https://docs.flutter.dev/ui/widgets/material)
-- [Gemini AI Flutter Sample](https://github.com/google-gemini/generative-ai-dart/blob/main/samples/flutter_app/lib/main.dart)
-- [Flutter Cupertino Widgets](https://docs.flutter.dev/ui/widgets/cupertino)
-- [Google Gemini 101 Pathway](https://developers.google.com/learn/pathways/solution-ai-gemini-101)
-- [Google AI Studio](https://aistudio.google.com/app/prompts/new_chat)
-- [Gemini API Getting Started](https://ai.google.dev/gemini-api/docs/get-started/tutorial?lang=dart&hl=pt-br#set-up-project)
-- [Gemini API Models Documentation](https://ai.google.dev/gemini-api/docs/models/gemini)
-- [Google AI Studio API Key](https://aistudio.google.com/app/apikey)
+- [@ryan_l3](https://www.linkedin.com/in/ryan-l3/)
 
 ## Challenge Description 🏆
 
@@ -86,3 +50,45 @@ Monday 10th, I will send a message to the best solutions and share the linkedin 
 
 Good luck! 🚀
 Note: Feel free to use custom widgets for cards and other repeated elements to keep your code DRY (Don't Repeat Yourself).
+
+## Figma Design
+
+- [Figma Design](https://www.figma.com/design/ouOKxazqnljO7leTqQN3Im/Mood-APP-Workshop?node-id=105-241&t=SvrZCPcmlFkTdbCX-1)
+
+# Install Requirements
+
+- [Flutter install](https://docs.flutter.dev/get-started/install)
+- [IDX](https://idx.com/)
+
+## Features
+
+- Track mood and analyze it using AI
+
+## Technologies
+
+- Flutter
+- Google Generative AI
+- Google Fonts
+
+## Getting Started
+
+1. Clone the repository
+2. Run `flutter pub get`
+3. Run `flutter run`
+
+## API Key
+
+- Create a new API key in the Google Cloud Console
+- Add the API key to the `lib/src/services/gemini_service.dart` file
+
+## Resources
+
+- [Flutter Hunt - UI Examples](https://flutterhunt.com/)
+- [Flutter Material Widgets](https://docs.flutter.dev/ui/widgets/material)
+- [Gemini AI Flutter Sample](https://github.com/google-gemini/generative-ai-dart/blob/main/samples/flutter_app/lib/main.dart)
+- [Flutter Cupertino Widgets](https://docs.flutter.dev/ui/widgets/cupertino)
+- [Google Gemini 101 Pathway](https://developers.google.com/learn/pathways/solution-ai-gemini-101)
+- [Google AI Studio](https://aistudio.google.com/app/prompts/new_chat)
+- [Gemini API Getting Started](https://ai.google.dev/gemini-api/docs/get-started/tutorial?lang=dart&hl=pt-br#set-up-project)
+- [Gemini API Models Documentation](https://ai.google.dev/gemini-api/docs/models/gemini)
+- [Google AI Studio API Key](https://aistudio.google.com/app/apikey)

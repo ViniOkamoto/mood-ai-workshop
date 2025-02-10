@@ -3,7 +3,6 @@ import 'package:mood_ai/core/theme/theme_constants.dart';
 import 'package:mood_ai/src/model/factors.dart';
 import 'package:mood_ai/src/model/mood.dart';
 import 'package:mood_ai/src/model/mood_request.dart';
-import 'package:mood_ai/src/screens/mood_result_screen.dart';
 import 'package:mood_ai/src/services/gemini_service.dart';
 import 'package:mood_ai/src/widgets/chip.dart';
 import 'package:mood_ai/src/widgets/text_field.dart';
@@ -45,11 +44,10 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
 
         // Navigate to results screen
         if (mounted) {
-          Navigator.push(
+          print(result);
+          Navigator.pop(
             context,
-            MaterialPageRoute(
-              builder: (context) => MoodResultScreen(result: result),
-            ),
+            result,
           );
         }
       } catch (e) {

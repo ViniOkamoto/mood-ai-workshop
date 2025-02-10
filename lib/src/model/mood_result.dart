@@ -1,11 +1,24 @@
 class MoodResult {
   final Score score;
   final String summary;
-  final String recommendation;
+  final List<Recommendation> recommendations;
   MoodResult({
     required this.score,
     required this.summary,
-    required this.recommendation,
+    required this.recommendations,
+  });
+}
+
+class Recommendation {
+  final String icon;
+  final String title;
+  final String description;
+  final String color;
+  Recommendation({
+    required this.icon,
+    required this.title,
+    required this.description,
+    required this.color,
   });
 }
 

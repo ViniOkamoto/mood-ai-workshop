@@ -50,7 +50,14 @@ class GeminiService {
         "description": "<score description>"
       },
       "summary": "<brief analysis of their mood and factors>",
-      "recommendation": "<personalized suggestion for improvement>"
+      "recommendations": [
+        {
+          "icon": "<text icon>",
+          "title": "<title of the recommendation>",
+          "description": "<description of the recommendation>",
+          "color": "<hex pastel tones color of the recommendation>"
+        }
+      ]
     }
 
     Guidelines:
@@ -58,6 +65,9 @@ class GeminiService {
     - Summary should be empathetic and acknowledge their feelings
     - Recommendation should be practical and specific to their situation
     - Keep responses concise but meaningful
+    - Recommendation should be a list of recommendations at least 3 recommendations
+    - recommendations colors should be pastel tones and should create a pleasant and calming effect, and contrast with the icons.
+    - recommendations icons should be relevant to the recommendation and should be a text icon.
     ''';
   }
 
@@ -75,12 +85,23 @@ class GeminiService {
         description: scoreData['description'],
       );
 
+      final recommendationsData = data['recommendations'] as List;
+      final recommendations = recommendationsData
+          .map((rec) => Recommendation(
+                icon: rec['icon'],
+                title: rec['title'],
+                description: rec['description'],
+                color: rec['color'],
+              ))
+          .toList();
+
       return MoodResult(
         score: score,
         summary: data['summary'],
-        recommendation: data['recommendation'],
+        recommendations: recommendations,
       );
     } catch (e) {
+      print(e);
       throw Exception('Failed to parse mood result: $e');
     }
   }
