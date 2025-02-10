@@ -6,7 +6,6 @@ import 'package:mood_ai/src/model/mood_request.dart';
 import 'package:mood_ai/src/widgets/chip.dart';
 import 'package:mood_ai/src/widgets/text_field.dart';
 import 'package:mood_ai/src/widgets/app_button.dart';
-import 'package:mood_ai/src/screens/ryan_mood_result.dart';
 
 class MoodTrackerScreenStateful extends StatefulWidget {
   const MoodTrackerScreenStateful({super.key});
@@ -34,14 +33,8 @@ class _MoodTrackerScreenStatefulState extends State<MoodTrackerScreenStateful> {
         description: _descriptionController.text,
         factors: selectedFactors,
       );
+
       print(moodRequest);
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => RyanMoodResult(
-            moodRequest: moodRequest,
-          ),
-        ),
-      );
     }
   }
 
