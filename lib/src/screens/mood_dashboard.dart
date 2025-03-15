@@ -1,8 +1,11 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mood_ai/core/theme/theme_constants.dart';
 import 'package:mood_ai/src/model/mood.dart';
 import 'package:mood_ai/src/model/mood_result.dart';
 import 'package:mood_ai/src/screens/mood_tracker_screen.dart';
+import 'package:mood_ai/src/screens/mood_input_selection_screen.dart';
+import 'package:mood_ai/src/services/health_service.dart';
 import 'package:mood_ai/src/widgets/app_button.dart';
 import 'package:mood_ai/src/widgets/recommendation_card.dart';
 
@@ -17,6 +20,49 @@ class MoodDashboard extends StatefulWidget {
 
 class _MoodDashboardState extends State<MoodDashboard> {
   MoodResult? moodResult;
+  final _healthService = HealthService();
+  Timer? _healthDataTimer;
+  Map<String, dynamic> _healthData = {
+    'heartRate': 0,
+    'steps': 0,
+    'sleepHours': 0,
+    'activeEnergy': 0,
+    'distance': 0,
+    'mindfulMinutes': 0,
+    'waterIntake': 0,
+    'bloodOxygen': 0,
+    'bodyTemperature': 0,
+    'lastUpdated': DateTime.now().toIso8601String(),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchHealthData();
+    // Refresh health data every 5 minutes
+    _healthDataTimer = Timer.periodic(const Duration(minutes: 5), (timer) {
+      _fetchHealthData();
+    });
+  }
+
+  @override
+  void dispose() {
+    _healthDataTimer?.cancel();
+    super.dispose();
+  }
+
+  Future<void> _fetchHealthData() async {
+    try {
+      final healthData = await _healthService.fetchHealthData();
+      if (mounted) {
+        setState(() {
+          _healthData = healthData;
+        });
+      }
+    } catch (e) {
+      print('Error fetching health data: $e');
+    }
+  }
 
   String _getMoodMessage(int score) {
     if (score >= 90) {
@@ -32,6 +78,18 @@ class _MoodDashboardState extends State<MoodDashboard> {
     }
   }
 
+  String getEmojiOnScore(int score) {
+    if (score >= 90) {
+      return 'assets/emojis/colorful-emoji-excited.png';
+    } else if (score >= 70) {
+      return 'assets/emojis/colorful-emoji-happy.png';
+    } else if (score >= 50) {
+      return 'assets/emojis/colorful-emoji-neutral.png';
+    } else {
+      return 'assets/emojis/colorful-emoji-sad.png';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,12 +99,16 @@ class _MoodDashboardState extends State<MoodDashboard> {
                 final result = await Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MoodTrackerScreen(),
+                    builder: (context) => const MoodInputSelectionScreen(),
                   ),
                 );
-                setState(() {
-                  moodResult = result as MoodResult;
-                });
+                if (result != null) {
+                  setState(() {
+                    moodResult = result as MoodResult;
+                  });
+                  // Refresh health data after mood tracking
+                  _fetchHealthData();
+                }
               },
               child: const Icon(Icons.add),
             )
@@ -72,12 +134,17 @@ class _MoodDashboardState extends State<MoodDashboard> {
                         final result = await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MoodTrackerScreen(),
+                            builder: (context) =>
+                                const MoodInputSelectionScreen(),
                           ),
                         );
-                        setState(() {
-                          moodResult = result as MoodResult;
-                        });
+                        if (result != null) {
+                          setState(() {
+                            moodResult = result as MoodResult;
+                          });
+                          // Refresh health data after mood tracking
+                          _fetchHealthData();
+                        }
                       },
                     ),
                   ],
@@ -200,21 +267,33 @@ class _MoodDashboardState extends State<MoodDashboard> {
                                   ),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                child: const Column(
+                                child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('Heart beat rate',
+                                    Text('Heart Rate & Oxygen',
                                         style: TextStyle(color: Colors.white)),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          '90 BPM',
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '${_healthData['heartRate']} BPM',
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                            ),
+                                            Text(
+                                              '${_healthData['bloodOxygen']}% O₂',
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.white70),
+                                            ),
+                                          ],
                                         ),
                                         Icon(Icons.favorite, color: Colors.red),
                                       ],
@@ -238,21 +317,33 @@ class _MoodDashboardState extends State<MoodDashboard> {
                                   ),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                child: const Column(
+                                child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('Sleep time',
+                                    Text('Rest & Mindfulness',
                                         style: TextStyle(color: Colors.white)),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          '7 hours',
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '${_healthData['sleepHours']}h sleep',
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                            ),
+                                            Text(
+                                              '${_healthData['mindfulMinutes']}m mindful',
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.white70),
+                                            ),
+                                          ],
                                         ),
                                         Icon(Icons.bedtime,
                                             color: Colors.deepPurple),
@@ -263,6 +354,55 @@ class _MoodDashboardState extends State<MoodDashboard> {
                               ),
                             ),
                           ],
+                        ),
+                        const SizedBox(height: 16),
+                        Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Color(0xFF4CAF50),
+                                Color(0xFF388E3C),
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Activity & Hydration',
+                                  style: TextStyle(color: Colors.white)),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${_healthData['steps']} steps',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white),
+                                      ),
+                                      Text(
+                                        '${_healthData['distance']}km • ${_healthData['waterIntake']}ml water',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.white70),
+                                      ),
+                                    ],
+                                  ),
+                                  Icon(Icons.directions_walk,
+                                      color: Colors.lightGreenAccent),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 24),
                         Text(

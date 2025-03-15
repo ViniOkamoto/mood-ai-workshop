@@ -4,6 +4,7 @@ import 'package:mood_ai/src/model/factors.dart';
 import 'package:mood_ai/src/model/mood.dart';
 import 'package:mood_ai/src/model/mood_request.dart';
 import 'package:mood_ai/src/services/gemini_service.dart';
+import 'package:mood_ai/src/services/health_service.dart';
 import 'package:mood_ai/src/widgets/chip.dart';
 import 'package:mood_ai/src/widgets/text_field.dart';
 import 'package:mood_ai/src/widgets/app_button.dart';
@@ -20,6 +21,7 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
   final List<String> selectedFactors = [];
   final TextEditingController _descriptionController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final _healthService = HealthService();
 
   bool get isFormValid =>
       selectedMood != null &&
@@ -34,17 +36,19 @@ class _MoodTrackerScreenState extends State<MoodTrackerScreen> {
       setState(() => _isLoading = true);
 
       try {
+        // Fetch latest health data
+        final healthData = await _healthService.fetchHealthData();
+
         final moodRequest = MoodRequest(
           mood: selectedMood!,
           description: _descriptionController.text,
           factors: selectedFactors,
+          healthData: healthData,
         );
 
         final result = await _geminiService.analyzeMood(moodRequest);
 
-        // Navigate to results screen
         if (mounted) {
-          print(result);
           Navigator.pop(
             context,
             result,
